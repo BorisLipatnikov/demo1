@@ -1,0 +1,82 @@
+pic16f1578
+
+WDT - en, 2с
+BOREN - off
+PWRT - off
+CP - off
+MCLR - off
+FOSC - INTOSC + PLLEN
+
+DMX:
+p5 - RC5 - RS_Rx
+p6 - RC4 - RS_Tx
+p8 - RC6 - RS_Dir
+
+PWM:
+p9 - RC7
+модуль PWM1, 300Hz ,  3.3ms , счетчик периода 52799
+квадратичная зависимость.
+
+DIP:
+p3 - RA4 - DP1
+p2 - RA5 - DP2
+p13- RB4 - DP3
+p12- RB5 - DP4
+p11- RB6 - DP5
+p10- RB7 - DP6
+p16- RC0 - DP7
+p15- RC1 - DP8
+p14- RC2 - DP9
+p7 - RC3 - DP10
+WPU, 
+опрос дипа TMR1 - 8с, intterrupt - off
+
+Управление;
+) При отсутствии сигнала управления ДМИКС прибор включается на 100% яркости.
+
+(person_t)Total_Personality
+
+
+
+    /*
+    int8_t temp = -32;
+    uint8_t ret = temp>>2;
+    
+    temp >>= 2;
+    ret = (uint8_t)temp;
+    temp >>= 1;
+    ret++;
+ */
+    
+
+
+    uint8_t a=100, b=200;
+    uint16_t c = a+b;
+    c++;
+    c= a*b;
+    c++;
+    c= b/a;
+    c++;
+    
+normalization
+
+if (channel_data<20) {
+            channel_data = 0;
+        }
+
+/*
+bool NewDataCheck (uint16_t* ptr_data) {    // ?
+    bool ret = false;
+    static uint16_t prev_data[TotalChannelPWM];
+    for (uint8_t count=0; count<TotalChannelPWM; ++count)
+        if(prev_data[count] != ptr_data[count]) {
+            prev_data[count] = ptr_data[count];
+            ret = true;
+            break;
+        }
+    return ret;
+}*/
+//if((!NewDataCheck(&new_pwm))&&(pwm.count)) return;
+
+
+
